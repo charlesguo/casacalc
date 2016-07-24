@@ -32,6 +32,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addressLabel" destination="5nv-zj-iSI" id="zER-Z0-C1s"/>
+                                    <segue destination="RGW-6H-bkl" kind="show" identifier="ShowDetail" id="cae-mZ-6L3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -267,8 +268,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Calculation" id="1CF-1O-MBC">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8P4-k7-4YL"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="44C-lX-khk"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8P4-k7-4YL">
+                            <connections>
+                                <action selector="cancel:" destination="RGW-6H-bkl" id="Ofl-lo-3a4"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="44C-lX-khk">
+                            <connections>
+                                <segue destination="ywa-F9-EeR" kind="unwind" unwindAction="unwindToCalculationList:" id="DKY-Br-B3H"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="additionalStampDutyTextField" destination="tSN-aH-CRU" id="SOD-5c-90t"/>
@@ -277,10 +286,12 @@
                         <outlet property="numPropertySelector" destination="aUz-oR-ssk" id="DOv-3P-vdr"/>
                         <outlet property="propertyAddressTextField" destination="cSJ-1O-g6J" id="Q1p-Uw-CIJ"/>
                         <outlet property="purchasePriceTextField" destination="MLL-tc-oV8" id="C7s-fy-Xbd"/>
+                        <outlet property="saveButton" destination="44C-lX-khk" id="yhR-m0-LPD"/>
                         <outlet property="totalPriceTextField" destination="RJA-PC-AuZ" id="qvH-aU-yfa"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eKT-3G-Qq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ywa-F9-EeR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3037" y="385"/>
         </scene>
@@ -318,7 +329,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nok-fa-XIB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2225" y="385"/>
+            <point key="canvasLocation" x="2219" y="820"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cae-mZ-6L3"/>
+    </inferredMetricsTieBreakers>
 </document>
