@@ -48,7 +48,9 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
         }
         
         // Enable the Save button only if the text field has a valid Calculation Name.
-        checkValidCalculationName()
+        
+//        checkValidCalculationName()
+        checkValidTotalAmount()
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,17 +72,107 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
         saveButton.enabled = false
     }
     
-    func checkValidCalculationName() {
-        // Disable the Save button if the text field is empty.
-        let text = propertyAddressTextField.text ?? ""
+//    func checkValidCalculationName() {
+//        // Disable the Save button if the text field is empty.
+//        let text = propertyAddressTextField.text ?? ""
+//        saveButton.enabled = !text.isEmpty
+//    }
+//    
+//
+    func checkValidTotalAmount() {
+        // Disable the Save button if totalPriceTextField is empty.
+        let text = totalPriceTextField.text ?? ""
         saveButton.enabled = !text.isEmpty
     }
+//
+//    func textFieldDidEndEditing(textField: UITextField) {
+//        checkValidCalculationName()
+////        checkValidTotalAmount()
+//        navigationItem.title = textField.text
+//    }
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        checkValidCalculationName()
-        navigationItem.title = textField.text
+    @IBAction func calculateTaxTotal(sender: AnyObject) {
+        guard let purchasePrice = Double(purchasePriceTextField.text!) else {
+            //show error
+            purchasePriceTextField.text = ""
+            basicStampDutyTextField.text = ""
+            additionalStampDutyTextField.text = ""
+            totalPriceTextField.text = ""
+            return
+        }
+        
+        // this is just for the additional buyer's stamp duty
+        var taxPercentage = 0.0
+        
+        switch nationalitySelector.selectedSegmentIndex {
+        case 0:
+            switch numPropertySelector.selectedSegmentIndex {
+            case 0:
+                taxPercentage = 0.00
+            case 1:
+                taxPercentage = 0.07
+            case 2:
+                taxPercentage = 0.10
+            default:
+                break
+            }
+            
+        case 1:
+            switch numPropertySelector.selectedSegmentIndex {
+            case 0:
+                taxPercentage = 0.05
+            case 1:
+                taxPercentage = 0.10
+            case 2:
+                taxPercentage = 0.15
+            default:
+                break
+            }
+            
+        case 2:
+            switch numPropertySelector.selectedSegmentIndex {
+            case 0:
+                taxPercentage = 0.15
+            case 1:
+                taxPercentage = 0.15
+            case 2:
+                taxPercentage = 0.15
+            default:
+                break
+            }
+            
+        default:
+            break
+        }
+        
+        let roundedPurchasePrice = round(100*purchasePrice)/100
+        var bsdAmount = 0.00
+        
+        if roundedPurchasePrice <= 180000 {
+            bsdAmount = 0.01 * roundedPurchasePrice
+        } else if roundedPurchasePrice > 180000 && roundedPurchasePrice <= 360000 {
+            bsdAmount = 1800 + (0.02 * (roundedPurchasePrice - 180000))
+        } else {
+            bsdAmount = 5400 + (0.03 * (roundedPurchasePrice - 360000))
+        }
+        
+        let roundedBsdAmount = round(100*bsdAmount)/100
+        let absdAmount = roundedPurchasePrice*taxPercentage
+        let roundedAbsdAmount = round(100*absdAmount)/100
+        let totalAmount = roundedPurchasePrice + roundedBsdAmount + roundedAbsdAmount
+        
+        if (!purchasePriceTextField.editing) {
+            purchasePriceTextField.text = String(format: "%.2f", roundedPurchasePrice)
+        }
+        basicStampDutyTextField.text = String(format: "%.2f", roundedBsdAmount)
+        additionalStampDutyTextField.text = String(format: "%.2f", roundedAbsdAmount)
+        totalPriceTextField.text = String(format: "%.2f", totalAmount)
+        
+        let text1 = propertyAddressTextField.text ?? ""
+        let text2 = purchasePriceTextField.text ?? ""
+        
+        saveButton.enabled = true && !(text1.isEmpty) && !(text2.isEmpty)
     }
-    
     
     // MARK: Navigation
     @IBAction func cancel(sender: UIBarButtonItem) {

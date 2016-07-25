@@ -168,12 +168,35 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Hjc-od-n5Z">
+                                        <rect key="frame" x="0.0" y="341.5" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hjc-od-n5Z" id="yyH-dN-Lk6">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hox-Rg-AOg">
+                                                    <rect key="frame" x="8" y="8" width="584" height="27"/>
+                                                    <state key="normal" title="Calculate"/>
+                                                    <connections>
+                                                        <action selector="calculateTaxTotal:" destination="RGW-6H-bkl" eventType="touchUpInside" id="pbn-OR-YAC"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Hox-Rg-AOg" firstAttribute="leading" secondItem="yyH-dN-Lk6" secondAttribute="leadingMargin" id="TfU-hE-wde"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Hox-Rg-AOg" secondAttribute="bottom" id="gdP-sX-Beo"/>
+                                                <constraint firstItem="Hox-Rg-AOg" firstAttribute="top" secondItem="yyH-dN-Lk6" secondAttribute="topMargin" id="pwj-mO-FbG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Hox-Rg-AOg" secondAttribute="trailing" id="s2W-KE-K4q"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Here's the actual total cost" id="Lul-HE-ghQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="zcr-jt-zEt">
-                                        <rect key="frame" x="0.0" y="391.5" width="600" height="70"/>
+                                        <rect key="frame" x="0.0" y="435.5" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zcr-jt-zEt" id="WJW-MW-D4y">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
@@ -202,7 +225,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="SU5-Fo-wwg">
-                                        <rect key="frame" x="0.0" y="461.5" width="600" height="70"/>
+                                        <rect key="frame" x="0.0" y="505.5" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SU5-Fo-wwg" id="W4N-I9-ygX">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
@@ -231,7 +254,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="hWc-Cb-s5W">
-                                        <rect key="frame" x="0.0" y="531.5" width="600" height="70"/>
+                                        <rect key="frame" x="0.0" y="575.5" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hWc-Cb-s5W" id="BYa-6u-f7I">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>

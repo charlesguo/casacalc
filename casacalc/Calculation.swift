@@ -51,7 +51,7 @@ class Calculation: NSObject, NSCoding {
         super.init()
         
         // Initialization should fail if there is no address/ purchase price or if the values cannot be computed
-        if propertyAddress.isEmpty || purchasePrice <= 0 || nationality < 0 || numProperty < 0 || basicStampDuty <= 0 || additionalStampDuty <= 0 || totalPrice <= 0 {
+        if propertyAddress.isEmpty || purchasePrice <= 0 || nationality < 0 || numProperty < 0 || basicStampDuty <= 0 || additionalStampDuty < 0 || totalPrice <= 0 {
             return nil
         }
     }
