@@ -15,9 +15,13 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
     @IBOutlet weak var purchasePriceTextField: UITextField!
     @IBOutlet weak var nationalitySelector: UISegmentedControl!
     @IBOutlet weak var numPropertySelector: UISegmentedControl!
-    @IBOutlet weak var basicStampDutyTextField: UITextField!
-    @IBOutlet weak var additionalStampDutyTextField: UITextField!
-    @IBOutlet weak var totalPriceTextField: UITextField!
+    @IBOutlet weak var basicStampDutyLabel: UILabel!
+//    @IBOutlet weak var basicStampDutyTextField: UITextField!
+    @IBOutlet weak var additionalStampDutyLabel: UILabel!
+//    @IBOutlet weak var additionalStampDutyTextField: UITextField!
+
+//    @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var totalPriceLabel: UILabel!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
@@ -42,9 +46,9 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
             purchasePriceTextField.text = String(calculation.purchasePrice)
             nationalitySelector.selectedSegmentIndex = calculation.nationality
             numPropertySelector.selectedSegmentIndex = calculation.numProperty
-            basicStampDutyTextField.text = String(calculation.basicStampDuty)
-            additionalStampDutyTextField.text = String(calculation.additionalStampDuty)
-            totalPriceTextField.text = String(calculation.totalPrice)
+            basicStampDutyLabel.text = String(calculation.basicStampDuty)
+            additionalStampDutyLabel.text = String(calculation.additionalStampDuty)
+            totalPriceLabel.text = String(calculation.totalPrice)
         }
         
         // Enable the Save button only if the text field has a valid Calculation Name.
@@ -81,7 +85,7 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
 //
     func checkValidTotalAmount() {
         // Disable the Save button if totalPriceTextField is empty.
-        let text = totalPriceTextField.text ?? ""
+        let text = totalPriceLabel.text ?? ""
         saveButton.enabled = !text.isEmpty
     }
 //
@@ -95,9 +99,9 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
         guard let purchasePrice = Double(purchasePriceTextField.text!) else {
             //show error
             purchasePriceTextField.text = ""
-            basicStampDutyTextField.text = ""
-            additionalStampDutyTextField.text = ""
-            totalPriceTextField.text = ""
+            basicStampDutyLabel.text = ""
+            additionalStampDutyLabel.text = ""
+            totalPriceLabel.text = ""
             return
         }
         
@@ -164,9 +168,9 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
         if (!purchasePriceTextField.editing) {
             purchasePriceTextField.text = String(format: "%.2f", roundedPurchasePrice)
         }
-        basicStampDutyTextField.text = String(format: "%.2f", roundedBsdAmount)
-        additionalStampDutyTextField.text = String(format: "%.2f", roundedAbsdAmount)
-        totalPriceTextField.text = String(format: "%.2f", totalAmount)
+        basicStampDutyLabel.text = String(format: "%.2f", roundedBsdAmount)
+        additionalStampDutyLabel.text = String(format: "%.2f", roundedAbsdAmount)
+        totalPriceLabel.text = String(format: "%.2f", totalAmount)
         
         let text1 = propertyAddressTextField.text ?? ""
         let text2 = purchasePriceTextField.text ?? ""
@@ -194,9 +198,9 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
             let purchasePrice = Double(purchasePriceTextField.text ?? "")
             let nationality = nationalitySelector.selectedSegmentIndex
             let numProperty = numPropertySelector.selectedSegmentIndex
-            let basicStampDuty = Double(basicStampDutyTextField.text ?? "")
-            let additionalStampDuty = Double(additionalStampDutyTextField.text ?? "")
-            let totalPrice = Double(totalPriceTextField.text ?? "")
+            let basicStampDuty = Double(basicStampDutyLabel.text ?? "")
+            let additionalStampDuty = Double(additionalStampDutyLabel.text ?? "")
+            let totalPrice = Double(totalPriceLabel.text ?? "")
             
             // Set the calculation to be passed to CalculationTableViewController after the unwind segue.
             calculation = Calculation(propertyAddress: propertyAddress, purchasePrice: purchasePrice!, nationality: nationality, numProperty: numProperty, basicStampDuty: basicStampDuty!, additionalStampDuty: additionalStampDuty!, totalPrice: totalPrice!)
