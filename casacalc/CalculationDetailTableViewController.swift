@@ -17,7 +17,6 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
     @IBOutlet weak var numPropertySelector: UISegmentedControl!
     @IBOutlet weak var basicStampDutyLabel: UILabel!
     @IBOutlet weak var additionalStampDutyLabel: UILabel!
-
     @IBOutlet weak var totalPriceLabel: UILabel!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -40,6 +39,7 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
         
         // set up views if editing an existing Calculation.
         if let calculation = calculation {
+            navigationItem.title = calculation.propertyAddress
             propertyAddressTextField.text = calculation.propertyAddress
             purchasePriceTextField.text = String(calculation.purchasePrice)
             nationalitySelector.selectedSegmentIndex = calculation.nationality

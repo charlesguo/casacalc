@@ -281,42 +281,40 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="hWc-Cb-s5W">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="aXY-3Q-bpL">
                                         <rect key="frame" x="0.0" y="575.5" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hWc-Cb-s5W" id="BYa-6u-f7I">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aXY-3Q-bpL" id="xyp-ah-uvf">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Total Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJP-ZY-Eye">
-                                                    <rect key="frame" x="8" y="8" width="1008" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Total Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOB-X6-ySx">
+                                                    <rect key="frame" x="8" y="8" width="584" height="17"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVO-wM-1VV">
-                                                    <rect key="frame" x="8" y="35" width="752" height="0.0"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OS8-3G-aWF">
+                                                    <rect key="frame" x="8" y="25" width="584" height="36.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="VVO-wM-1VV" firstAttribute="leading" secondItem="BYa-6u-f7I" secondAttribute="leadingMargin" id="FRc-jU-1WW"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="WJP-ZY-Eye" secondAttribute="trailing" id="KaL-y7-aTR"/>
-                                                <constraint firstItem="VVO-wM-1VV" firstAttribute="leading" secondItem="BYa-6u-f7I" secondAttribute="leadingMargin" id="Lmg-nZ-Uo0"/>
-                                                <constraint firstItem="VVO-wM-1VV" firstAttribute="top" secondItem="WJP-ZY-Eye" secondAttribute="bottom" constant="10" id="arZ-a3-fRa"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="VVO-wM-1VV" secondAttribute="trailing" id="giI-ej-j1L"/>
-                                                <constraint firstItem="WJP-ZY-Eye" firstAttribute="leading" secondItem="BYa-6u-f7I" secondAttribute="leadingMargin" id="qxh-nQ-9Vb"/>
-                                                <constraint firstItem="WJP-ZY-Eye" firstAttribute="top" secondItem="BYa-6u-f7I" secondAttribute="topMargin" id="soY-6V-CUU"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="VVO-wM-1VV" secondAttribute="bottom" id="unU-de-Kv6"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="VVO-wM-1VV" secondAttribute="trailing" constant="356" id="zVD-RC-KCC"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fOB-X6-ySx" secondAttribute="trailing" id="FSL-OI-v86"/>
+                                                <constraint firstItem="OS8-3G-aWF" firstAttribute="top" secondItem="fOB-X6-ySx" secondAttribute="bottom" constant="10" id="G14-rs-VTy"/>
+                                                <constraint firstItem="fOB-X6-ySx" firstAttribute="top" secondItem="xyp-ah-uvf" secondAttribute="topMargin" id="Is5-rz-J1a"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="OS8-3G-aWF" secondAttribute="trailing" id="KS1-NM-gQH"/>
+                                                <constraint firstItem="OS8-3G-aWF" firstAttribute="top" secondItem="fOB-X6-ySx" secondAttribute="bottom" id="Qwx-3t-MgW"/>
+                                                <constraint firstItem="OS8-3G-aWF" firstAttribute="leading" secondItem="xyp-ah-uvf" secondAttribute="leadingMargin" id="W9X-6I-Q31"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="OS8-3G-aWF" secondAttribute="bottom" id="Wkw-2N-J9W"/>
+                                                <constraint firstItem="fOB-X6-ySx" firstAttribute="leading" secondItem="xyp-ah-uvf" secondAttribute="leadingMargin" id="r4Q-gS-YGl"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="FRc-jU-1WW"/>
-                                                    <exclude reference="unU-de-Kv6"/>
-                                                    <exclude reference="zVD-RC-KCC"/>
+                                                    <exclude reference="Wkw-2N-J9W"/>
+                                                    <exclude reference="Qwx-3t-MgW"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -332,12 +330,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="379.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="ftM-TA-dgF">
-                                                    <rect key="frame" x="224" y="30" width="320" height="320"/>
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="ftM-TA-dgF">
+                                                    <rect key="frame" x="47" y="30" width="320" height="320"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="ftM-TA-dgF" secondAttribute="height" multiplier="1:1" id="UQ9-bl-1UE"/>
+                                                        <constraint firstAttribute="height" constant="320" id="hnS-E4-Xlm"/>
+                                                        <constraint firstAttribute="width" constant="320" id="p8x-Qm-orZ"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="UQ9-bl-1UE"/>
+                                                        </mask>
+                                                    </variation>
                                                     <connections>
                                                         <outletCollection property="gestureRecognizers" destination="4b3-ga-Hta" appends="YES" id="hOw-SE-bMH"/>
                                                     </connections>
@@ -387,7 +392,7 @@
                         <outlet property="propertyAddressTextField" destination="cSJ-1O-g6J" id="Q1p-Uw-CIJ"/>
                         <outlet property="purchasePriceTextField" destination="MLL-tc-oV8" id="C7s-fy-Xbd"/>
                         <outlet property="saveButton" destination="44C-lX-khk" id="yhR-m0-LPD"/>
-                        <outlet property="totalPriceLabel" destination="VVO-wM-1VV" id="cZV-a7-k6P"/>
+                        <outlet property="totalPriceLabel" destination="OS8-3G-aWF" id="ma2-1D-gIG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eKT-3G-Qq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
