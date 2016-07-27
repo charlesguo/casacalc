@@ -18,11 +18,12 @@ class Calculation: NSObject, NSCoding {
     var basicStampDuty: Double
     var additionalStampDuty: Double
     var totalPrice: Double
+    var photo: UIImage?
     
     // MARK: Archiving Paths
     
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("meals")
+    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("calculations")
     
     // MARK: Types
     
@@ -34,10 +35,11 @@ class Calculation: NSObject, NSCoding {
         static let basicStampDutyKey = "basicStampDuty"
         static let additionalStampDutyKey = "additionalStampDuty"
         static let totalPriceKey = "totalPrice"
+        static let photoKey = "photo"
     }
     
     // MARK: Initialization
-    init?(propertyAddress: String, purchasePrice: Double, nationality: Int, numProperty: Int, basicStampDuty: Double, additionalStampDuty: Double, totalPrice: Double) {
+    init?(propertyAddress: String, purchasePrice: Double, nationality: Int, numProperty: Int, basicStampDuty: Double, additionalStampDuty: Double, totalPrice: Double, photo: UIImage?) {
         
         // Initialize stored properties
         self.propertyAddress = propertyAddress
@@ -47,6 +49,7 @@ class Calculation: NSObject, NSCoding {
         self.basicStampDuty = basicStampDuty
         self.additionalStampDuty = additionalStampDuty
         self.totalPrice = totalPrice
+        self.photo = photo
         
         super.init()
         
@@ -65,6 +68,7 @@ class Calculation: NSObject, NSCoding {
         aCoder.encodeDouble(basicStampDuty, forKey: PropertyKey.basicStampDutyKey)
         aCoder.encodeDouble(additionalStampDuty, forKey: PropertyKey.additionalStampDutyKey)
         aCoder.encodeDouble(totalPrice, forKey: PropertyKey.totalPriceKey)
+        aCoder.encodeObject(photo, forKey: PropertyKey.photoKey)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -75,7 +79,8 @@ class Calculation: NSObject, NSCoding {
         let basicStampDuty = aDecoder.decodeDoubleForKey(PropertyKey.basicStampDutyKey)
         let additionalStampDuty = aDecoder.decodeDoubleForKey(PropertyKey.additionalStampDutyKey)
         let totalPrice = aDecoder.decodeDoubleForKey(PropertyKey.totalPriceKey)
+        let photo = aDecoder.decodeObjectForKey(PropertyKey.photoKey) as? UIImage
         
-        self.init(propertyAddress: propertyAddress, purchasePrice: purchasePrice, nationality: nationality, numProperty: numProperty, basicStampDuty: basicStampDuty, additionalStampDuty: additionalStampDuty, totalPrice: totalPrice)
+        self.init(propertyAddress: propertyAddress, purchasePrice: purchasePrice, nationality: nationality, numProperty: numProperty, basicStampDuty: basicStampDuty, additionalStampDuty: additionalStampDuty, totalPrice: totalPrice, photo: photo)
     }
 }

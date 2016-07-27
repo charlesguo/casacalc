@@ -31,8 +31,8 @@ class CalculationTableViewController: UITableViewController {
 
     func loadSampleCalculations() {
         
-        let calculation1 = Calculation(propertyAddress: "12 Hi San Rd, S 243565", purchasePrice: 1000800.00, nationality: 0, numProperty: 0, basicStampDuty: 300.00, additionalStampDuty: 50000.00, totalPrice: 1051000.00)!
-        let calculation2 = Calculation(propertyAddress: "34 Bubu Lane, S 167823", purchasePrice: 2000000.00, nationality: 0, numProperty: 0, basicStampDuty: 600.00, additionalStampDuty: 100000.00, totalPrice: 2100600.00)!
+        let calculation1 = Calculation(propertyAddress: "12 Hi San Rd, S 243565", purchasePrice: 1000800.00, nationality: 0, numProperty: 0, basicStampDuty: 300.00, additionalStampDuty: 50000.00, totalPrice: 1051000.00, photo: UIImage(named: "defaultPhoto")! )!
+        let calculation2 = Calculation(propertyAddress: "34 Bubu Lane, S 167823", purchasePrice: 2000000.00, nationality: 0, numProperty: 0, basicStampDuty: 600.00, additionalStampDuty: 100000.00, totalPrice: 2100600.00, photo: UIImage(named: "defaultPhoto")! )!
         
         calculations += [calculation1, calculation2]
         
@@ -152,7 +152,7 @@ class CalculationTableViewController: UITableViewController {
     func saveCalculations() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(calculations, toFile: Calculation.ArchiveURL.path!)
         if !isSuccessfulSave {
-            print("Failed to save meals ...")
+            print("Failed to save calculations ...")
         }
     }
     

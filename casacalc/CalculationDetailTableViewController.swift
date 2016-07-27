@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalculationDetailTableViewController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate {
+class CalculationDetailTableViewController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: Properties
     @IBOutlet weak var propertyAddressTextField: UITextField!
@@ -16,20 +16,18 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
     @IBOutlet weak var nationalitySelector: UISegmentedControl!
     @IBOutlet weak var numPropertySelector: UISegmentedControl!
     @IBOutlet weak var basicStampDutyLabel: UILabel!
-//    @IBOutlet weak var basicStampDutyTextField: UITextField!
     @IBOutlet weak var additionalStampDutyLabel: UILabel!
-//    @IBOutlet weak var additionalStampDutyTextField: UITextField!
 
-//    @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    @IBOutlet weak var photoImageView: UIImageView!
     
     
     /* 
     This value is either passed by 'CalculationTableViewController' in 'prepareForSegue(_:sender:)'
-    or constructed as part of adding a new meal
+    or constructed as part of adding a new calculation
     */
     var calculation: Calculation?
     
@@ -49,6 +47,7 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
             basicStampDutyLabel.text = String(calculation.basicStampDuty)
             additionalStampDutyLabel.text = String(calculation.additionalStampDuty)
             totalPriceLabel.text = String(calculation.totalPrice)
+            photoImageView.image = calculation.photo
         }
         
         // Enable the Save button only if the text field has a valid Calculation Name.
@@ -201,11 +200,49 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
             let basicStampDuty = Double(basicStampDutyLabel.text ?? "")
             let additionalStampDuty = Double(additionalStampDutyLabel.text ?? "")
             let totalPrice = Double(totalPriceLabel.text ?? "")
+            let photo = photoImageView.image
             
             // Set the calculation to be passed to CalculationTableViewController after the unwind segue.
-            calculation = Calculation(propertyAddress: propertyAddress, purchasePrice: purchasePrice!, nationality: nationality, numProperty: numProperty, basicStampDuty: basicStampDuty!, additionalStampDuty: additionalStampDuty!, totalPrice: totalPrice!)
+            calculation = Calculation(propertyAddress: propertyAddress, purchasePrice: purchasePrice!, nationality: nationality, numProperty: numProperty, basicStampDuty: basicStampDuty!, additionalStampDuty: additionalStampDuty!, totalPrice: totalPrice!, photo: photo)
         }
     }
     
-    // MARK: Actions (only for image)
+    // MARK: UIImagePickerControllerDelegate
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        // The info dictionary contains multiple representations of the image, and this uses the original.
+        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        // Set photoImageView to display the selected image.
+        photoImageView.image = selectedImage
+        
+        // Dismiss the picker.
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    // MARK: Actions
+    @IBAction func selectImage(sender: UITapGestureRecognizer) {
+        
+        // Hide the keyboard
+        propertyAddressTextField.resignFirstResponder()
+        purchasePriceTextField.resignFirstResponder()
+        
+        // UIImagePickerController is a view controller that lets a user pick media (from camera or library)
+        let imagePickerController = UIImagePickerController()
+        
+        // Only allow photos to be picked, not taken
+        imagePickerController.sourceType = .PhotoLibrary
+        
+        // Make sure CalculationDetailTableViewController is notified when the user picks an image
+        imagePickerController.delegate = self
+        
+        presentViewController(imagePickerController, animated: true, completion: nil)
+    }
+    
+    
+    
 }
