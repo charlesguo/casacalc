@@ -12,6 +12,7 @@ class CalculationTableViewCell: UITableViewCell {
 
     // MARK: Properties
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var photoImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

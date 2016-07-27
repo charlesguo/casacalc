@@ -64,6 +64,7 @@ class CalculationTableViewController: UITableViewController {
         let calculation = calculations[indexPath.row]
         
         cell.addressLabel.text = calculation.propertyAddress
+        cell.photoImageView.image = calculation.photo
         
 
         return cell
