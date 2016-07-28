@@ -30,29 +30,46 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
     */
     var calculation: Calculation?
     
+    // for the numeric keypad
+    let keyboardToolbar = UIToolbar()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Formatting
+//        let formatter = NSNumberFormatter()
+//        formatter.locale = NSLocale(localeIdentifier: "en_SG")
+//        formatter.numberStyle = .CurrencyStyle
+        
         // Handle the text field's user input through delegate callbacks.
         propertyAddressTextField.delegate = self
         purchasePriceTextField.delegate = self
+        
+        keyboardToolbar.barStyle = UIBarStyle.Default
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .Done, target: view, action: #selector(UIView.endEditing(_:)))
+        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        keyboardToolbar.sizeToFit()
+        purchasePriceTextField.inputAccessoryView = keyboardToolbar
         
         // set up views if editing an existing Calculation.
         if let calculation = calculation {
             navigationItem.title = calculation.propertyAddress
             propertyAddressTextField.text = calculation.propertyAddress
-            purchasePriceTextField.text = String(calculation.purchasePrice)
+            purchasePriceTextField.text = String(format: "%.2f", calculation.purchasePrice)
+//            purchasePriceTextField.text = formatter.stringFromNumber(calculation.purchasePrice)
             nationalitySelector.selectedSegmentIndex = calculation.nationality
             numPropertySelector.selectedSegmentIndex = calculation.numProperty
-            basicStampDutyLabel.text = String(calculation.basicStampDuty)
-            additionalStampDutyLabel.text = String(calculation.additionalStampDuty)
-            totalPriceLabel.text = String(calculation.totalPrice)
+            basicStampDutyLabel.text = String(format: "%.2f", calculation.basicStampDuty)
+            additionalStampDutyLabel.text = String(format: "%.2f", calculation.additionalStampDuty)
+            totalPriceLabel.text = String(format: "%.2f", calculation.totalPrice)
+//            basicStampDutyLabel.text = formatter.stringFromNumber(calculation.basicStampDuty)
+//            additionalStampDutyLabel.text = formatter.stringFromNumber(calculation.additionalStampDuty)
+//            totalPriceLabel.text = formatter.stringFromNumber(calculation.totalPrice)
             photoImageView.image = calculation.photo
         }
         
-        // Enable the Save button only if the text field has a valid Calculation Name.
-        
-//        checkValidCalculationName()
+        // Enable the Save button only if the stamp duties have been recomputed.
         checkValidTotalAmount()
     }
 
@@ -60,7 +77,8 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    
     // MARK: - Table view data source
 
     // MARK: UITextFieldDelegate
@@ -103,6 +121,10 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
             totalPriceLabel.text = ""
             return
         }
+        
+//        let formatter = NSNumberFormatter()
+//        formatter.locale = NSLocale(localeIdentifier: "en_SG")
+//        formatter.numberStyle = .CurrencyStyle
         
         // this is just for the additional buyer's stamp duty
         var taxPercentage = 0.0
