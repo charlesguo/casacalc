@@ -16,6 +16,12 @@ class CalculationTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // navigation bar
+        let navBarColor = navigationController!.navigationBar
+        navBarColor.barTintColor = UIColor(red:  255/255.0, green: 0/255.0, blue: 0/255.0, alpha: 100.0/100.0)
+        navBarColor.tintColor = UIColor.whiteColor()
+        navBarColor.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem()
         
