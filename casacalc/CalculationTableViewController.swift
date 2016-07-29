@@ -18,7 +18,7 @@ class CalculationTableViewController: UITableViewController {
         
         // navigation bar
         let navBarColor = navigationController!.navigationBar
-        navBarColor.barTintColor = UIColor(red:  255/255.0, green: 0/255.0, blue: 0/255.0, alpha: 100.0/100.0)
+        navBarColor.barTintColor = UIColor(red:  255/255.0, green: 102/255.0, blue: 102/255.0, alpha: 100.0/100.0)
         navBarColor.tintColor = UIColor.whiteColor()
         navBarColor.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
@@ -26,6 +26,7 @@ class CalculationTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = editButtonItem()
         
         // Load any saved calculations, otherwise load sample data.
+        // can only be tested by creating a new entry and then delete the sample entries.
         if let savedCalculations = loadCalculations() {
             calculations += savedCalculations
         } else {

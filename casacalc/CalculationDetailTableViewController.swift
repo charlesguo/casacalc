@@ -38,7 +38,7 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
         
         // navigation bar
         let navBarColor = navigationController!.navigationBar
-        navBarColor.barTintColor = UIColor(red:  255/255.0, green: 0/255.0, blue: 0/255.0, alpha: 100.0/100.0)
+        navBarColor.barTintColor = UIColor(red:  255/255.0, green: 102/255.0, blue: 102/255.0, alpha: 100.0/100.0)
         navBarColor.tintColor = UIColor.whiteColor()
         navBarColor.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
@@ -244,6 +244,7 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
         formatter.numberStyle = .DecimalStyle
         
         if saveButton === sender {
+            print(NSDate())
             let propertyAddress = propertyAddressTextField.text ?? ""
             let purchasePrice = Double(formatter.numberFromString(purchasePriceTextField.text ?? "")!)
             let nationality = nationalitySelector.selectedSegmentIndex
@@ -252,7 +253,8 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
             let additionalStampDuty = Double(formatter.numberFromString(additionalStampDutyLabel.text ?? "")!)
             let totalPrice = Double(formatter.numberFromString(totalPriceLabel.text ?? "")!)
             let photo = photoImageView.image
-            
+            print(NSDate())
+
             // Set the calculation to be passed to CalculationTableViewController after the unwind segue.
             calculation = Calculation(propertyAddress: propertyAddress, purchasePrice: purchasePrice, nationality: nationality, numProperty: numProperty, basicStampDuty: basicStampDuty, additionalStampDuty: additionalStampDuty, totalPrice: totalPrice, photo: photo)
         }
