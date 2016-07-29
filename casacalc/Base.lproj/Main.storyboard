@@ -29,7 +29,18 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nv-zj-iSI">
                                             <rect key="frame" x="97" y="8" width="495" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvs-gj-d3f">
+                                            <rect key="frame" x="97" y="37" width="17" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFz-gr-xL6">
+                                            <rect key="frame" x="122" y="37" width="470" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -37,6 +48,7 @@
                                 <connections>
                                     <outlet property="addressLabel" destination="5nv-zj-iSI" id="zER-Z0-C1s"/>
                                     <outlet property="photoImageView" destination="pBR-ID-vuF" id="N1z-MO-n5g"/>
+                                    <outlet property="totalPriceLabel" destination="MFz-gr-xL6" id="Pfl-jZ-VgQ"/>
                                     <segue destination="RGW-6H-bkl" kind="show" identifier="ShowDetail" id="cae-mZ-6L3"/>
                                 </connections>
                             </tableViewCell>
@@ -153,7 +165,7 @@
                                                     <segments>
                                                         <segment title="Singapore Citizen"/>
                                                         <segment title="Permanent Resident"/>
-                                                        <segment title="Foreigner *"/>
+                                                        <segment title="Foreigner"/>
                                                     </segments>
                                                 </segmentedControl>
                                             </subviews>
@@ -196,7 +208,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hox-Rg-AOg">
                                                     <rect key="frame" x="8" y="8" width="584" height="27"/>
-                                                    <state key="normal" title="Calculate"/>
+                                                    <state key="normal" title="Calculate/ Re-calculate"/>
                                                     <connections>
                                                         <action selector="calculateTaxTotal:" destination="RGW-6H-bkl" eventType="touchUpInside" id="pbn-OR-YAC"/>
                                                     </connections>

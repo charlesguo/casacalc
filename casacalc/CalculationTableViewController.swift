@@ -63,9 +63,13 @@ class CalculationTableViewController: UITableViewController {
         // Fetches the appropriate calculation for the data source layout.
         let calculation = calculations[indexPath.row]
         
+        // Formatting
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .DecimalStyle
+        
         cell.addressLabel.text = calculation.propertyAddress
         cell.photoImageView.image = calculation.photo
-        
+        cell.totalPriceLabel.text = formatter.stringFromNumber(calculation.totalPrice)
 
         return cell
     }

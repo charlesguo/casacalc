@@ -37,35 +37,35 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
         super.viewDidLoad()
         
         // Formatting
-//        let formatter = NSNumberFormatter()
-//        formatter.locale = NSLocale(localeIdentifier: "en_SG")
-//        formatter.numberStyle = .CurrencyStyle
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .DecimalStyle
         
         // Handle the text field's user input through delegate callbacks.
         propertyAddressTextField.delegate = self
         purchasePriceTextField.delegate = self
         
+        purchasePriceTextField.inputAccessoryView = keyboardToolbar
         keyboardToolbar.barStyle = UIBarStyle.Default
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .Done, target: view, action: #selector(UIView.endEditing(_:)))
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(doneWithNum))
         keyboardToolbar.items = [flexBarButton, doneBarButton]
         keyboardToolbar.sizeToFit()
-        purchasePriceTextField.inputAccessoryView = keyboardToolbar
+        
         
         // set up views if editing an existing Calculation.
         if let calculation = calculation {
             navigationItem.title = calculation.propertyAddress
             propertyAddressTextField.text = calculation.propertyAddress
-            purchasePriceTextField.text = String(format: "%.2f", calculation.purchasePrice)
-//            purchasePriceTextField.text = formatter.stringFromNumber(calculation.purchasePrice)
+//            purchasePriceTextField.text = String(format: "%.2f", calculation.purchasePrice)
+            purchasePriceTextField.text = formatter.stringFromNumber(calculation.purchasePrice)
             nationalitySelector.selectedSegmentIndex = calculation.nationality
             numPropertySelector.selectedSegmentIndex = calculation.numProperty
-            basicStampDutyLabel.text = String(format: "%.2f", calculation.basicStampDuty)
-            additionalStampDutyLabel.text = String(format: "%.2f", calculation.additionalStampDuty)
-            totalPriceLabel.text = String(format: "%.2f", calculation.totalPrice)
-//            basicStampDutyLabel.text = formatter.stringFromNumber(calculation.basicStampDuty)
-//            additionalStampDutyLabel.text = formatter.stringFromNumber(calculation.additionalStampDuty)
-//            totalPriceLabel.text = formatter.stringFromNumber(calculation.totalPrice)
+//            basicStampDutyLabel.text = String(format: "%.2f", calculation.basicStampDuty)
+//            additionalStampDutyLabel.text = String(format: "%.2f", calculation.additionalStampDuty)
+//            totalPriceLabel.text = String(format: "%.2f", calculation.totalPrice)
+            basicStampDutyLabel.text = formatter.stringFromNumber(calculation.basicStampDuty)
+            additionalStampDutyLabel.text = formatter.stringFromNumber(calculation.additionalStampDuty)
+            totalPriceLabel.text = formatter.stringFromNumber(calculation.totalPrice)
             photoImageView.image = calculation.photo
         }
         
@@ -78,9 +78,16 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
         // Dispose of any resources that can be recreated.
     }
     
-    
-    // MARK: - Table view data source
-
+    // MARK: numkeypad
+    func doneWithNum() {
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .DecimalStyle
+        
+        let tempDisplay = formatter.numberFromString(purchasePriceTextField.text!)
+        purchasePriceTextField.text = formatter.stringFromNumber(tempDisplay!)
+        self.view.endEditing(true)
+    }
+//
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // Hide the keyboard.
@@ -91,6 +98,14 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
     func textFieldDidBeginEditing(textfield: UITextField) {
         // Disable the Save button while editing.
         saveButton.enabled = false
+        
+        if textfield == purchasePriceTextField && textfield.text != "" {
+            let formatter = NSNumberFormatter()
+            formatter.numberStyle = .DecimalStyle
+            
+            let tempValue = formatter.numberFromString(textfield.text!)!
+            textfield.text = "\(tempValue)"
+        }
     }
     
 //    func checkValidCalculationName() {
@@ -113,7 +128,11 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
 //    }
     
     @IBAction func calculateTaxTotal(sender: AnyObject) {
-        guard let purchasePrice = Double(purchasePriceTextField.text!) else {
+        
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .DecimalStyle
+        
+        guard let purchasePrice = formatter.numberFromString(purchasePriceTextField.text!) else {
             //show error
             purchasePriceTextField.text = ""
             basicStampDutyLabel.text = ""
@@ -121,10 +140,6 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
             totalPriceLabel.text = ""
             return
         }
-        
-//        let formatter = NSNumberFormatter()
-//        formatter.locale = NSLocale(localeIdentifier: "en_SG")
-//        formatter.numberStyle = .CurrencyStyle
         
         // this is just for the additional buyer's stamp duty
         var taxPercentage = 0.0
@@ -170,7 +185,7 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
             break
         }
         
-        let roundedPurchasePrice = round(100*purchasePrice)/100
+        let roundedPurchasePrice = round(100*Double(purchasePrice))/100
         var bsdAmount = 0.00
         
         if roundedPurchasePrice <= 180000 {
@@ -186,12 +201,16 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
         let roundedAbsdAmount = round(100*absdAmount)/100
         let totalAmount = roundedPurchasePrice + roundedBsdAmount + roundedAbsdAmount
         
-        if (!purchasePriceTextField.editing) {
-            purchasePriceTextField.text = String(format: "%.2f", roundedPurchasePrice)
-        }
-        basicStampDutyLabel.text = String(format: "%.2f", roundedBsdAmount)
-        additionalStampDutyLabel.text = String(format: "%.2f", roundedAbsdAmount)
-        totalPriceLabel.text = String(format: "%.2f", totalAmount)
+//        if (!purchasePriceTextField.editing) {
+//            purchasePriceTextField.text = String(format: "%.2f", roundedPurchasePrice)
+//        }
+//        basicStampDutyLabel.text = String(format: "%.2f", roundedBsdAmount)
+//        additionalStampDutyLabel.text = String(format: "%.2f", roundedAbsdAmount)
+//        totalPriceLabel.text = String(format: "%.2f", totalAmount)
+        
+        basicStampDutyLabel.text = formatter.stringFromNumber(roundedBsdAmount)
+        additionalStampDutyLabel.text = formatter.stringFromNumber(roundedAbsdAmount)
+        totalPriceLabel.text = formatter.stringFromNumber(totalAmount)
         
         let text1 = propertyAddressTextField.text ?? ""
         let text2 = purchasePriceTextField.text ?? ""
@@ -214,18 +233,22 @@ class CalculationDetailTableViewController: UITableViewController, UITextFieldDe
     
     // This method lets you configure a view controller before it's presented.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .DecimalStyle
+        
         if saveButton === sender {
             let propertyAddress = propertyAddressTextField.text ?? ""
-            let purchasePrice = Double(purchasePriceTextField.text ?? "")
+            let purchasePrice = Double(formatter.numberFromString(purchasePriceTextField.text ?? "")!)
             let nationality = nationalitySelector.selectedSegmentIndex
             let numProperty = numPropertySelector.selectedSegmentIndex
-            let basicStampDuty = Double(basicStampDutyLabel.text ?? "")
-            let additionalStampDuty = Double(additionalStampDutyLabel.text ?? "")
-            let totalPrice = Double(totalPriceLabel.text ?? "")
+            let basicStampDuty = Double(formatter.numberFromString(basicStampDutyLabel.text ?? "")!)
+            let additionalStampDuty = Double(formatter.numberFromString(additionalStampDutyLabel.text ?? "")!)
+            let totalPrice = Double(formatter.numberFromString(totalPriceLabel.text ?? "")!)
             let photo = photoImageView.image
             
             // Set the calculation to be passed to CalculationTableViewController after the unwind segue.
-            calculation = Calculation(propertyAddress: propertyAddress, purchasePrice: purchasePrice!, nationality: nationality, numProperty: numProperty, basicStampDuty: basicStampDuty!, additionalStampDuty: additionalStampDuty!, totalPrice: totalPrice!, photo: photo)
+            calculation = Calculation(propertyAddress: propertyAddress, purchasePrice: purchasePrice, nationality: nationality, numProperty: numProperty, basicStampDuty: basicStampDuty, additionalStampDuty: additionalStampDuty, totalPrice: totalPrice, photo: photo)
         }
     }
     
