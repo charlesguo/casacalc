@@ -29,21 +29,22 @@ class CalculationTableViewController: UITableViewController {
         // can only be tested by creating a new entry and then delete the sample entries.
         if let savedCalculations = loadCalculations() {
             calculations += savedCalculations
-        } else {
-            // load the sample data
-            loadSampleCalculations()
         }
+//        else {
+//            // load the sample data
+//            loadSampleCalculations()
+//        }
         
     }
 
-    func loadSampleCalculations() {
-        
-        let calculation1 = Calculation(propertyAddress: "12 Hi San Rd, S 243565", purchasePrice: 1000800.00, nationality: 0, numProperty: 0, basicStampDuty: 300.00, additionalStampDuty: 50000.00, totalPrice: 1051000.00, photo: UIImage(named: "defaultPhoto")! )!
-        let calculation2 = Calculation(propertyAddress: "34 Bubu Lane, S 167823", purchasePrice: 2000000.00, nationality: 0, numProperty: 0, basicStampDuty: 600.00, additionalStampDuty: 100000.00, totalPrice: 2100600.00, photo: UIImage(named: "defaultPhoto")! )!
-        
-        calculations += [calculation1, calculation2]
-        
-    }
+//    func loadSampleCalculations() {
+//        
+//        let calculation1 = Calculation(propertyAddress: "12 Hi San Rd, S 243565", purchasePrice: 1000800.00, nationality: 0, numProperty: 0, basicStampDuty: 300.00, additionalStampDuty: 50000.00, totalPrice: 1051000.00, photo: UIImage(named: "defaultPhoto")! )!
+//        let calculation2 = Calculation(propertyAddress: "34 Bubu Lane, S 167823", purchasePrice: 2000000.00, nationality: 0, numProperty: 0, basicStampDuty: 600.00, additionalStampDuty: 100000.00, totalPrice: 2100600.00, photo: UIImage(named: "defaultPhoto")! )!
+//        
+//        calculations += [calculation1, calculation2]
+//        
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -57,7 +58,18 @@ class CalculationTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return calculations.count
+        if calculations.count == 0 {
+            let emptyLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+            emptyLabel.text = "No calculations present."
+            emptyLabel.textAlignment = NSTextAlignment.Center
+            self.tableView.backgroundView = emptyLabel
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+            return 0
+        } else {
+            self.tableView.backgroundView = nil
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+            return calculations.count
+        }
     }
 
     
