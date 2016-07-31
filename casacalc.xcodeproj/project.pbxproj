@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		562543081D4CF71C00C521A2 /* launchscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 562543071D4CF71C00C521A2 /* launchscreen.storyboard */; };
 		569E28EB1D4102D800A3A322 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E28EA1D4102D800A3A322 /* AppDelegate.swift */; };
 		569E28ED1D4102D800A3A322 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E28EC1D4102D800A3A322 /* ViewController.swift */; };
 		569E28F01D4102D800A3A322 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569E28EE1D4102D800A3A322 /* Main.storyboard */; };
 		569E28F21D4102D800A3A322 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 569E28F11D4102D800A3A322 /* Assets.xcassets */; };
-		569E28F51D4102D800A3A322 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569E28F31D4102D800A3A322 /* LaunchScreen.storyboard */; };
 		569E28FD1D42155000A3A322 /* CalculationDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E28FC1D42155000A3A322 /* CalculationDetailTableViewController.swift */; };
 		569E28FF1D421DDC00A3A322 /* Calculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E28FE1D421DDC00A3A322 /* Calculation.swift */; };
 		569E29011D423A6700A3A322 /* CalculationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E29001D423A6700A3A322 /* CalculationTableViewCell.swift */; };
@@ -19,12 +19,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		562543071D4CF71C00C521A2 /* launchscreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = launchscreen.storyboard; path = casacalc/launchscreen.storyboard; sourceTree = "<group>"; };
 		569E28E71D4102D800A3A322 /* casacalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = casacalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		569E28EA1D4102D800A3A322 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		569E28EC1D4102D800A3A322 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		569E28EF1D4102D800A3A322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		569E28F11D4102D800A3A322 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		569E28F41D4102D800A3A322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		569E28F61D4102D800A3A322 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		569E28FC1D42155000A3A322 /* CalculationDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculationDetailTableViewController.swift; sourceTree = "<group>"; };
 		569E28FE1D421DDC00A3A322 /* Calculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculation.swift; sourceTree = "<group>"; };
@@ -46,6 +46,7 @@
 		569E28DE1D4102D800A3A322 = {
 			isa = PBXGroup;
 			children = (
+				562543071D4CF71C00C521A2 /* launchscreen.storyboard */,
 				569E28E91D4102D800A3A322 /* casacalc */,
 				569E28E81D4102D800A3A322 /* Products */,
 			);
@@ -70,7 +71,6 @@
 				569E28FE1D421DDC00A3A322 /* Calculation.swift */,
 				569E28FC1D42155000A3A322 /* CalculationDetailTableViewController.swift */,
 				569E28F11D4102D800A3A322 /* Assets.xcassets */,
-				569E28F31D4102D800A3A322 /* LaunchScreen.storyboard */,
 				569E28F61D4102D800A3A322 /* Info.plist */,
 			);
 			path = casacalc;
@@ -108,6 +108,7 @@
 				TargetAttributes = {
 					569E28E61D4102D800A3A322 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 9H77SGX423;
 					};
 				};
 			};
@@ -134,7 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				569E28F51D4102D800A3A322 /* LaunchScreen.storyboard in Resources */,
+				562543081D4CF71C00C521A2 /* launchscreen.storyboard in Resources */,
 				569E28F21D4102D800A3A322 /* Assets.xcassets in Resources */,
 				569E28F01D4102D800A3A322 /* Main.storyboard in Resources */,
 			);
@@ -165,14 +166,6 @@
 				569E28EF1D4102D800A3A322 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		569E28F31D4102D800A3A322 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				569E28F41D4102D800A3A322 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -267,10 +260,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: JINGQIANG GUO (Z6SSB45XM6)";
 				INFOPLIST_FILE = casacalc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swiftcharles.casacalc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1d81156b-cc41-4512-8634-681bd8992c0a";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -279,10 +275,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: JINGQIANG GUO (9H77SGX423)";
 				INFOPLIST_FILE = casacalc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.swiftcharles.casacalc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1d81156b-cc41-4512-8634-681bd8992c0a";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -306,6 +305,7 @@
 				569E28FB1D4102D800A3A322 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
